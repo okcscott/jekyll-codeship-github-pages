@@ -1,5 +1,3 @@
-require 'tmpdir'
-
 desc "Generate jekyll site"
 task :generate do
   puts "## Generating Site with Jekyll"
@@ -9,16 +7,14 @@ end
 desc "Generate and publish blog to gh-pages"
 task :publish do
   Dir.mktmpdir do |tmp|
-    # system "mv _site/* #{tmp}"
-    # system "git checkout -b gh-pages"
-    # system "rm -rf *"
-    # system "mkdir _deploy"
-    # system "mv #{tmp}/* _deploy"
-    # message = "Site updated at #{Time.now.utc}"
-    # system "git add ."
-    # system "git commit -am #{message.shellescape}"
-    # system "git push origin gh-pages --force"
-    # system "git checkout master"
-    # system "echo yolo"
+    system "mv _site/* #{tmp}"
+    system "rm -rf *"
+    system "mv #{tmp}/* ."    
+    system 'git config --global user.email "scottwlesser+codeship@gmail.com"'
+    system 'git config --global user.name "Scott Lesser - Codeship"'
+    system "git add ."
+    system "git commit -am 'Codeship Update'"
+    system "git remote add ghub git@github.com:okcscott/okcscott.github.io.git"
+    system "git push -f ghub master:gh-pages"
   end
 end
