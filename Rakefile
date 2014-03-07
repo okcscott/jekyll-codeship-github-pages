@@ -16,7 +16,7 @@ task :publish do
     system 'git config --global user.name "Scott Lesser - Codeship"'
     system "git add ."
     system "git commit -am 'Codeship Update'"
-    system "git remote add ghub git@github.com:okcscott/okcscott.github.io.git"
+    system "git remote add ghub git@github.com:okcscott/jekyll-codeship-github-pages.git"
     system "git push -f ghub master:gh-pages"
   end
 end
