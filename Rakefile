@@ -15,12 +15,9 @@ task :publish do
     system "mv #{tmp}/* ."    
     system 'git config --global user.email "scottwlesser+codeship@gmail.com"'
     system 'git config --global user.name "Scott Lesser - Codeship"'
-    puts "## Git Status"
-    system "git status"
-    # system "git add ."
-
-    # system "git commit -am 'Codeship Update'"
-    # system "git remote add ghub git@github.com:okcscott/jekyll-codeship-github-pages.git"
-    # system "git push -f ghub master:gh-pages"
+    system "git add ."
+    system "git commit -am 'Codeship Update'"
+    system "git remote add ghub git@github.com:okcscott/jekyll-codeship-github-pages.git"
+    system "git push -f ghub gh-pages"
   end
 end
